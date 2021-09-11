@@ -1,8 +1,9 @@
 import Card from "./Card"
+import cardStyles from "../styles/CardList.module.css"
 
 const CardList = ({data}) => {
     return (
-        <div>
+        <div className={cardStyles.container}>
             {
                 data ?
                 data.map( (pokemon) => (
