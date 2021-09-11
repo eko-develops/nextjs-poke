@@ -1,11 +1,12 @@
-html,
+* {
+  box-sizing: border-box;
+  list-style-type: none;
+}
+
 body {
   border: none;
   padding: 0;
   margin: 0;
   font-family: Poppins, 'Helvetica Neue', sans-serif;
-}
-
-* {
-  box-sizing: border-box;
+  background-color: red;
 }
