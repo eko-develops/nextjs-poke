@@ -1,0 +1,28 @@
+.wrapper{
+    text-align: center;
+    padding: 1rem;
+}
+
+.brand{
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.nav{
+    ul{
+        display: flex;
+        justify-content: space-evenly;
+        li{
+            &:hover a{
+                color: red;
+            }
+            list-style-type: none;
+            margin: 20px 0;
+            a{
+                text-decoration: none;
+                padding: 0.5rem 1rem;
+                color: rgb(51, 51, 51);
+            }
+        }
+    }
+}
