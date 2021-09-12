@@ -21,13 +21,17 @@ const search = ({data}) => {
             const queryPokemon = pokemon.filter( (pokemon) => pokemon.name.includes(query))
             
             if(queryPokemon.length > 0){
-                setIsError(false)
-                setFilteredPokemon(queryPokemon)
-                setCount(queryPokemon.length)
+                showResults(queryPokemon)
             } else {
                 reset()
             }
         }
+    }
+
+    const showResults = (queryPokemon) => {
+        setIsError(false)
+        setFilteredPokemon(queryPokemon)
+        setCount(queryPokemon.length)
     }
 
     const handleClear = () => {
