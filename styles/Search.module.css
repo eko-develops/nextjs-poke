@@ -15,6 +15,16 @@
   margin: 2rem 0;
 }
 
+.countWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.countWrapper p {
+  margin-left: 0.2rem;
+}
+
 .searchForm {
   margin: 1rem;
   display: -webkit-box;

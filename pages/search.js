@@ -4,8 +4,9 @@ import searchStyles from "../styles/Search.module.css"
 const search = ({data}) => {
 
     const [searchValue, setSearchValue] = useState("")
-    const [filteredPokemon, setFilteredPokemon] = useState("")
+    const [filteredPokemon, setFilteredPokemon] = useState([])
     const [isError, setIsError] = useState(false)
+    const [count, setCount] = useState(0)
 
     const pokemon = data.results;
 
@@ -15,16 +16,20 @@ const search = ({data}) => {
         console.log(query.length)
         console.log("search button clicked")
         if(!query.length) {
+            setCount(0)
             setIsError(true)
+            setFilteredPokemon([])
         } else {
             const queryPokemon = pokemon.filter( (pokemon) => pokemon.name.includes(query))
             
             if(queryPokemon.length > 0){
                 setIsError(false)
                 setFilteredPokemon(queryPokemon)
+                setCount(queryPokemon.length)
             } else {
+                setCount(0)
                 setIsError(true)
-                setFilteredPokemon("")
+                setFilteredPokemon([])
             }
             
         }
@@ -48,13 +53,15 @@ const search = ({data}) => {
                     <button
                     onClick={() => {
                         setSearchValue("")
-                        setFilteredPokemon("")
+                        setFilteredPokemon([])
                         setIsError(false)
+                        setCount(0)
                     }}
                         className={searchStyles.searchButton}
                         type="button">Clear</button>
                 </div>
             </form>
+                <div className={searchStyles.countWrapper}><h4>Count: </h4><p>{count}</p></div>
             <div className={searchStyles.searchResults}>
                 {isError && "Could not find any matches.."}
                 {filteredPokemon.length > 0 && filteredPokemon.map( ({name}) => <p key={name}>{name}</p> )}
@@ -65,13 +72,12 @@ const search = ({data}) => {
 
 export default search
 
-export async function getStaticProps(){
+export const getStaticProps = async () => {
 
     const response = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=100')
     const data = await response.json()
 
-
-    return{
+    return {
         props: {
             data
         }
