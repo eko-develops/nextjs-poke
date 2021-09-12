@@ -1,0 +1,34 @@
+.container{
+    background-color: purple;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    text-align: center;
+    h4, h3{
+        text-transform: uppercase;
+    }
+
+    p{
+        text-transform: capitalize;
+    }
+
+    margin: 2rem 0;
+
+}
+
+.statsWrapper{
+    background-color: green;
+
+   
+}
+
+.stats{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.imageWrapper{
+    width: 50%;
+    margin: auto;
+}

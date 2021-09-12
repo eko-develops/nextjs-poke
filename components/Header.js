@@ -16,12 +16,12 @@ const Header = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link href="/">
+                        <Link href="/search">
                             <a>Search</a>
                         </Link>
                     </li>
                     <li>
-                        <Link href="/">
+                        <Link href="/favourites">
                             <a>Favourites</a>
                         </Link>
                     </li>

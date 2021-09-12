@@ -1,3 +1,42 @@
-.container{
-    background-color: purple;
+.container {
+  background-color: purple;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 90%;
+  text-align: center;
+  margin: 2rem 0;
 }
+
+.container h4, .container h3 {
+  text-transform: uppercase;
+}
+
+.container p {
+  text-transform: capitalize;
+}
+
+.statsWrapper {
+  background-color: green;
+}
+
+.stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.imageWrapper {
+  width: 50%;
+  margin: auto;
+}
+/*# sourceMappingURL=Card.module.css.map */
