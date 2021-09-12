@@ -16,9 +16,7 @@ const search = ({data}) => {
         console.log(query.length)
         console.log("search button clicked")
         if(!query.length) {
-            setCount(0)
-            setIsError(true)
-            setFilteredPokemon([])
+            reset()
         } else {
             const queryPokemon = pokemon.filter( (pokemon) => pokemon.name.includes(query))
             
@@ -27,13 +25,22 @@ const search = ({data}) => {
                 setFilteredPokemon(queryPokemon)
                 setCount(queryPokemon.length)
             } else {
-                setCount(0)
-                setIsError(true)
-                setFilteredPokemon([])
+                reset()
             }
-            
         }
+    }
 
+    const handleClear = () => {
+        setSearchValue("")
+        setFilteredPokemon([])
+        setIsError(false)
+        setCount(0)
+    }
+
+    const reset = () => {
+        setCount(0)
+        setIsError(true)
+        setFilteredPokemon([])
     }
 
     return (
@@ -49,16 +56,14 @@ const search = ({data}) => {
                 onChange={ (e) => setSearchValue(e.target.value) }
                 ></input>
                 <div className={searchStyles.buttonWrapper}>
-                    <button onClick={(e) => submitSearch(e, searchValue)} className={searchStyles.searchButton} type="submit">Search</button>
                     <button
-                    onClick={() => {
-                        setSearchValue("")
-                        setFilteredPokemon([])
-                        setIsError(false)
-                        setCount(0)
-                    }}
-                        className={searchStyles.searchButton}
-                        type="button">Clear</button>
+                    onClick={(e) => submitSearch(e, searchValue)}
+                    className={searchStyles.searchButton}
+                    type="submit">Search</button>
+                    <button
+                    onClick={handleClear}
+                    className={searchStyles.searchButton}
+                    type="button">Clear</button>
                 </div>
             </form>
                 <div className={searchStyles.countWrapper}><h4>Count: </h4><p>{count}</p></div>
