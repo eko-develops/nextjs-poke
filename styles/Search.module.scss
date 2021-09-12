@@ -1,3 +1,39 @@
 .searchWrapper{
-    background-color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .searchResults{
+        margin: 2rem 0;
+    }
 }
+
+.searchForm{
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .buttonWrapper{
+        margin-top: 1rem;
+        button{
+            margin: 0 0.5rem;
+        }
+    }
+
+    .searchInput{
+        text-align: center;
+        border: 2px rgb(182, 182, 182) solid;
+        border-radius: 15px;
+        padding: 0.3rem 0.8rem;
+    }
+
+    .searchButton{
+        border-radius: 8px;
+        padding: 0.3rem 1rem;
+        background-color: rgb(83, 83, 83);
+        color: white;
+        cursor: pointer;
+    }
+}
+
