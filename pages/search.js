@@ -12,11 +12,23 @@ const search = ({data}) => {
 
     const submitSearch = (e, query) => {
         e.preventDefault()
+        console.log(query.length)
         console.log("search button clicked")
-        if(!query.length) return
+        if(!query.length) {
+            setIsError(true)
+        } else {
+            const queryPokemon = pokemon.filter( (pokemon) => pokemon.name.includes(query))
+            
+            if(queryPokemon.length > 0){
+                setIsError(false)
+                setFilteredPokemon(queryPokemon)
+            } else {
+                setIsError(true)
+                setFilteredPokemon("")
+            }
+            
+        }
 
-        const filteredPokemon = pokemon.filter( (pokemon) => pokemon.name.includes(query))
-        setFilteredPokemon(filteredPokemon)
     }
 
     return (
@@ -36,7 +48,9 @@ const search = ({data}) => {
                     <button
                     onClick={() => {
                         setSearchValue("")
-                        setFilteredPokemon("")}}
+                        setFilteredPokemon("")
+                        setIsError(false)
+                    }}
                         className={searchStyles.searchButton}
                         type="button">Clear</button>
                 </div>
