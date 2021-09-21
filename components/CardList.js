@@ -1,16 +1,13 @@
 import Card from "./Card"
 import cardStyles from "../styles/CardList.module.css"
 
-const CardList = ({data}) => {
+const CardList = ({pokemon}) => {
+
     return (
         <div className={cardStyles.container}>
             {
-                data ?
-                data.map( (pokemon) => (
-                    <Card key={pokemon.id} pokemon={pokemon}/>
-                ))
-                : "No Pokemon Found"
-             }
+                pokemon.map( (pokemon, index) => <Card key={index} pokemon={pokemon} />)
+            }
         </div>
     )
 }
