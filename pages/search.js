@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import searchStyles from "../styles/Search.module.css"
+import Link from "next/link"
 
 const search = ({data}) => {
 
@@ -8,31 +9,8 @@ const search = ({data}) => {
     const [isError, setIsError] = useState(false)
     const [count, setCount] = useState(0)
 
-    const pokemon = data.results;
 
-
-    const submitSearch = (e, query) => {
-        e.preventDefault()
-        console.log(query.length)
-        console.log("search button clicked")
-        if(!query.length) {
-            reset()
-        } else {
-            const queryPokemon = pokemon.filter( (pokemon) => pokemon.name.includes(query))
-            
-            if(queryPokemon.length > 0){
-                showResults(queryPokemon)
-            } else {
-                reset()
-            }
-        }
-    }
-
-    const showResults = (queryPokemon) => {
-        setIsError(false)
-        setFilteredPokemon(queryPokemon)
-        setCount(queryPokemon.length)
-    }
+    const pokemon = data.results;   //array of 100 pokemon
 
     const handleClear = () => {
         setSearchValue("")
@@ -41,10 +19,11 @@ const search = ({data}) => {
         setCount(0)
     }
 
-    const reset = () => {
-        setCount(0)
-        setIsError(true)
-        setFilteredPokemon([])
+    const handleOnChange = (e) => {
+        setSearchValue(e.target.value)
+        const filterPokemon = pokemon.filter( (pokemon) => pokemon.name.includes(searchValue) )
+        setFilteredPokemon(filterPokemon)
+        setCount(filterPokemon.length)
     }
 
     return (
@@ -57,13 +36,9 @@ const search = ({data}) => {
                 type="text"
                 placeholder="Enter a pokemon name.."
                 value={searchValue}
-                onChange={ (e) => setSearchValue(e.target.value) }
+                onChange={ (e) => handleOnChange(e)}
                 ></input>
                 <div className={searchStyles.buttonWrapper}>
-                    <button
-                    onClick={(e) => submitSearch(e, searchValue)}
-                    className={searchStyles.searchButton}
-                    type="submit">Search</button>
                     <button
                     onClick={handleClear}
                     className={searchStyles.searchButton}
@@ -73,7 +48,7 @@ const search = ({data}) => {
                 <div className={searchStyles.countWrapper}><h4>Count: </h4><p>{count}</p></div>
             <div className={searchStyles.searchResults}>
                 {isError && "Could not find any matches.."}
-                {filteredPokemon.length > 0 && filteredPokemon.map( ({name}) => <p key={name}>{name}</p> )}
+                {filteredPokemon.map( (pokemon, index) => <Link href="#"><a key={index}>{pokemon.name}</a></Link> )}
             </div>
         </div>
     )
