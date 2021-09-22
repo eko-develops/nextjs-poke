@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import searchStyles from "../styles/Search.module.css"
 import Link from "next/link"
 
@@ -19,11 +19,9 @@ const search = ({newData}) => {
     }
 
     const handleOnChange = (e) => {
-        setSearchValue(e.target.value)
-        const filterPokemon = pokemon.filter( (pokemon) => pokemon.name.includes(searchValue) )
-        setFilteredPokemon(filterPokemon)
-        setCount(filterPokemon.length)
+        
     }
+
 
     return (
         <div className={searchStyles.searchWrapper}>
@@ -47,7 +45,11 @@ const search = ({newData}) => {
                 <div className={searchStyles.countWrapper}><h4>Count: </h4><p>{count}</p></div>
             <div className={searchStyles.searchResults}>
                 {isError && "Could not find any matches.."}
-                {filteredPokemon.map( (pokemon, index) => <Link key={pokemon.name + "-" + index} href={`/pokemon/${pokemon.id}`}><a key={index}>{pokemon.name}</a></Link> )}
+                {/* {filteredPokemon.map( (pokemon, index) => <Link key={pokemon.name + "-" + index} href={`/pokemon/${pokemon.id}`}><a key={index}>{pokemon.name}</a></Link> )} */}
+                {filteredPokemon && filteredPokemon.map( (pokemon, index) => (
+                    <Link key={pokemon.name + "-" + index} href={`/pokemon/${pokemon.id}`}><a key={index}>{pokemon.name}</a></Link>
+                ))
+                }
             </div>
         </div>
     )
