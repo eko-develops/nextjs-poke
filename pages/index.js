@@ -1,17 +1,15 @@
 import CardList from '../components/CardList'
 import styles from '../styles/Home.module.css'
 
-export default function Home( {data} ) {
+export default function Home( {pokemon} ) {
 
-
-  const pokemon = data.results;
   console.log(pokemon)
   return (
     <div className={styles.container}>
       <h1>Home</h1>
       
       {/* if there is data, display the card list */}
-      { data && <CardList pokemon={pokemon}/>}
+      { pokemon && <CardList pokemon={pokemon}/>}
 
     </div>
   )
@@ -20,12 +18,24 @@ export default function Home( {data} ) {
 export async function getStaticProps(context){
 
     
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon`);
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=150`);
     const data = await response.json();
+    const results = data.results;
+
+    const IMAGE_API_URL = `https://assets.pokemon.com/assets/cms2/img/pokedex/full`;
+    const pokemon = results.map ( (pokemon, index) => {
+      const paddedIndex = ('00' + (index + 1)).slice(-3);
+      const imageUrl = `${IMAGE_API_URL}/${paddedIndex}.png`;
+
+      return{
+        ...pokemon,
+        image: imageUrl
+      }
+    })
 
   return {
     props: {
-      data
+      pokemon
     }
   }
 }
