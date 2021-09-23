@@ -26,4 +26,11 @@
   text-decoration: none;
   color: black;
 }
+
+@media all and (min-width: 1165px) {
+  .container {
+    max-width: 70%;
+    margin: 0 auto;
+  }
+}
 /*# sourceMappingURL=CardList.module.css.map */
