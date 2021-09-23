@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import searchStyles from "../styles/Search.module.css"
-import Link from "next/link"
+import CardList from '../components/CardList'
 
 const search = ({newData}) => {
 
@@ -13,9 +13,9 @@ const search = ({newData}) => {
 
     const handleClear = () => {
         setSearchValue("")
-        setFilteredPokemon([])
+        setFilteredPokemon(pokemon)
         setIsError(false)
-        setCount(0)
+        setCount(pokemon.length)
     }
 
     const handleOnChange = (e) => {
@@ -51,11 +51,10 @@ const search = ({newData}) => {
                 <div className={searchStyles.countWrapper}><h4>Count: </h4><p>{count}</p></div>
             <div className={searchStyles.searchResults}>
                 {isError && "Could not find any matches.."}
-                {/* {filteredPokemon.map( (pokemon, index) => <Link key={pokemon.name + "-" + index} href={`/pokemon/${pokemon.id}`}><a key={index}>{pokemon.name}</a></Link> )} */}
-                {filteredPokemon && filteredPokemon.map( (pokemon, index) => (
-                    <Link key={pokemon.name + "-" + index} href={`/pokemon/${pokemon.id}`}><a key={index}>{pokemon.name}</a></Link>
-                ))
+                {
+                    filteredPokemon && <CardList pokemon={filteredPokemon} />
                 }
+
             </div>
         </div>
     )
@@ -67,11 +66,15 @@ export const getStaticProps = async () => {
 
     const response = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=20')
     const {results} = await response.json()
-
+    
+    const IMAGE_API_URL = `https://assets.pokemon.com/assets/cms2/img/pokedex/full`;
     const newData = results.map( (pokemon, index) => {
+        const paddedIndex = ('00' + (index + 1)).slice(-3);
+        const imageUrl = `${IMAGE_API_URL}/${paddedIndex}.png`;
         return {
             ...pokemon,
             id: index + 1,
+            image: imageUrl
         }
     })
 

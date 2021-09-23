@@ -9,7 +9,7 @@ const CardList = ({pokemon}) => {
             {
                 pokemon.map( (pokemon, index) => (
                 <div className={cardStyles.card} key={pokemon.name + "-" + (index + 1)}>
-                    <Link href={`/pokemon/${index + 1}`}>
+                    <Link href={`/pokemon/${pokemon.id}`}>
                         <a>
                             <Image src={pokemon.image} width={150} height={150}/>
                             <h2>{pokemon.name}</h2>
