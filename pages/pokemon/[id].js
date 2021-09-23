@@ -1,17 +1,19 @@
 import Image from 'next/image'
+import SinglePokemonStyles from '../../styles/SinglePokemon.module.css'
 
 const SinglePokemon = ({pokemon, image}) => {
 
 
     return (
-        <div>
-            <Image height={300} width={300} src={image} />
-            <h1>{pokemon.name}</h1>
-            <p>pokemon id: {pokemon.id}</p>
-            <div className="stats">
+        <div className={SinglePokemonStyles.container}>
+            <div className={SinglePokemonStyles.imageWrapper}>
+                <Image height={300} width={300} src={image} />
+            </div>
+            <h1>{pokemon.name} #{pokemon.id}</h1>
+            <div className={SinglePokemonStyles.statsWrapper}>
                 {
                     pokemon.stats.map( (stat, index) => (
-                        <div key={stat + "-" + index} className="stat">
+                        <div key={stat + "-" + index} className={SinglePokemonStyles.stat}>
                             <h3>{stat.stat.name}</h3>
                             <span>{stat.base_stat}</span>
                         </div>
