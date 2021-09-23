@@ -3,7 +3,7 @@ import SinglePokemonStyles from '../../styles/SinglePokemon.module.css'
 
 const SinglePokemon = ({pokemon, image}) => {
 
-
+    console.log(pokemon)
     return (
         <div className={SinglePokemonStyles.container}>
             <div className={SinglePokemonStyles.imageWrapper}>
@@ -17,6 +17,14 @@ const SinglePokemon = ({pokemon, image}) => {
                             <h3>{stat.stat.name}</h3>
                             <span>{stat.base_stat}</span>
                         </div>
+                    ))
+                }
+            </div>
+            <div className={SinglePokemonStyles.typesWrapper}>
+                <h3>Types</h3>
+                {
+                    pokemon.types.map( (type, index) => (
+                        <span key={`${type}-${index}`} className={SinglePokemonStyles.typePill}>{type.type.name}</span>
                     ))
                 }
             </div>

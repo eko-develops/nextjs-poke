@@ -35,4 +35,22 @@
           align-items: center;
   text-transform: uppercase;
 }
+
+.typesWrapper {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.typesWrapper > h3 {
+  margin-bottom: 10px;
+}
+
+.typePill {
+  margin: 0 10px;
+  text-transform: uppercase;
+  background-color: teal;
+  padding: 0.3rem 0.8rem;
+  border-radius: 10px;
+  color: white;
+}
 /*# sourceMappingURL=SinglePokemon.module.css.map */
