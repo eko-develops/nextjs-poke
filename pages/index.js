@@ -1,9 +1,12 @@
 import CardList from '../components/CardList'
+import HeadMeta from '../components/HeadMeta';
 import homeStyles from '../styles/Home.module.css'
 
 export default function Home( {pokemon} ) {
 
   return (
+    <>
+    <HeadMeta title="Home" />
     <div className={homeStyles.container}>
       <h1>Home</h1>
       
@@ -11,6 +14,7 @@ export default function Home( {pokemon} ) {
       { pokemon && <CardList pokemon={pokemon}/>}
 
     </div>
+    </>
   )
 }
 

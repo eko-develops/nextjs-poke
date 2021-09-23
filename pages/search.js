@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import searchStyles from "../styles/Search.module.css"
 import CardList from '../components/CardList'
+import HeadMeta from '../components/HeadMeta'
 
 const search = ({newData}) => {
 
@@ -30,6 +31,8 @@ const search = ({newData}) => {
 
 
     return (
+        <>
+        <HeadMeta title="Search" />
         <div className={searchStyles.searchWrapper}>
             <h1>Search</h1>
             <form className={searchStyles.searchForm}>
@@ -57,6 +60,7 @@ const search = ({newData}) => {
 
             </div>
         </div>
+        </>
     )
 }
 
