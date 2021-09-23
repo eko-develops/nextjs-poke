@@ -35,6 +35,7 @@ const search = ({newData}) => {
         <HeadMeta title="Search" />
         <div className={searchStyles.searchWrapper}>
             <h1>Search</h1>
+            <p>Search for a pokemon</p>
             <form className={searchStyles.searchForm}>
                 <input
                 maxLength={20}

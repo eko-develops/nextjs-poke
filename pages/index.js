@@ -9,6 +9,7 @@ export default function Home( {pokemon} ) {
     <HeadMeta title="Home" />
     <div className={homeStyles.container}>
       <h1>Home</h1>
+      <p>Static Site Generation - NextJS</p>
       
       {/* if there is data, display the card list */}
       { pokemon && <CardList pokemon={pokemon}/>}

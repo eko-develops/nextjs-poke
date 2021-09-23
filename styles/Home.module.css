@@ -2,7 +2,7 @@
   padding: 0 1rem;
 }
 
-.container h1 {
+.container h1, .container p {
   text-align: center;
 }
 /*# sourceMappingURL=Home.module.css.map */
