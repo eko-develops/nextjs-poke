@@ -31,7 +31,7 @@ const search = ({newData}) => {
 
     return (
         <div className={searchStyles.searchWrapper}>
-            <h1>Search Pokemon</h1>
+            <h1>Search</h1>
             <form className={searchStyles.searchForm}>
                 <input
                 maxLength={20}
