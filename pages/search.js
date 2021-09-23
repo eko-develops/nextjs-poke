@@ -23,7 +23,9 @@ const search = ({newData}) => {
     }
 
     useEffect( () => {
-        setFilteredPokemon(pokemon.filter( (pokemon) => pokemon.name.includes(searchValue)));
+        const filterPokemon = pokemon.filter( (pokemon) => pokemon.name.includes(searchValue));
+        setFilteredPokemon(filterPokemon);
+        setCount(filterPokemon.length)
     },[searchValue])
 
 
