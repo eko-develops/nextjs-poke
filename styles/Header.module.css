@@ -12,9 +12,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .nav ul li {
@@ -23,12 +23,14 @@
 }
 
 .nav ul li:hover a {
-  color: red;
+  color: grey;
 }
 
 .nav ul li a {
   text-decoration: none;
   padding: 0.5rem 1rem;
   color: #333333;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
 /*# sourceMappingURL=Header.module.css.map */

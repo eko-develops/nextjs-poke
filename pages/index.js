@@ -1,10 +1,10 @@
 import CardList from '../components/CardList'
-import styles from '../styles/Home.module.css'
+import homeStyles from '../styles/Home.module.css'
 
 export default function Home( {pokemon} ) {
 
   return (
-    <div className={styles.container}>
+    <div className={homeStyles.container}>
       <h1>Home</h1>
       
       {/* if there is data, display the card list */}

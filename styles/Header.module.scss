@@ -11,10 +11,10 @@
 .nav{
     ul{
         display: flex;
-        justify-content: space-evenly;
+        justify-content: center;
         li{
             &:hover a{
-                color: red;
+                color: grey;
             }
             list-style-type: none;
             margin: 20px 0;
@@ -22,6 +22,7 @@
                 text-decoration: none;
                 padding: 0.5rem 1rem;
                 color: rgb(51, 51, 51);
+                transition: all 0.3s ease-out;
             }
         }
     }
