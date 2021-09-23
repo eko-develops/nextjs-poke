@@ -19,8 +19,14 @@ const search = ({newData}) => {
     }
 
     const handleOnChange = (e) => {
-        
+        setSearchValue(e.target.value)
     }
+
+    useEffect( () => {
+        
+        setFilteredPokemon(() => pokemon.filter( (pokemon) => pokemon.name.includes(searchValue)))
+
+    },[searchValue])
 
 
     return (
