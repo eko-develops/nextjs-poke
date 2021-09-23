@@ -7,7 +7,6 @@ const search = ({newData}) => {
 
     const [searchValue, setSearchValue] = useState("")
     const [filteredPokemon, setFilteredPokemon] = useState([])
-    const [isError, setIsError] = useState(false)
     const [count, setCount] = useState(0)
 
     const pokemon = newData;   //array of 20 pokemon
@@ -15,7 +14,6 @@ const search = ({newData}) => {
     const handleClear = () => {
         setSearchValue("")
         setFilteredPokemon(pokemon)
-        setIsError(false)
         setCount(pokemon.length)
     }
 
@@ -54,7 +52,6 @@ const search = ({newData}) => {
             </form>
                 <div className={searchStyles.countWrapper}><h4>Count: </h4><p>{count}</p></div>
             <div className={searchStyles.searchResults}>
-                {isError && "Could not find any matches.."}
                 {
                     filteredPokemon && <CardList pokemon={filteredPokemon} />
                 }
