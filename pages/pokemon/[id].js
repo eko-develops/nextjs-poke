@@ -3,7 +3,6 @@ import SinglePokemonStyles from '../../styles/SinglePokemon.module.css'
 
 const SinglePokemon = ({pokemon, image}) => {
 
-    console.log(pokemon)
     return (
         <div className={SinglePokemonStyles.container}>
             <div className={SinglePokemonStyles.imageWrapper}>
@@ -43,7 +42,19 @@ export const getStaticProps = async (context) => {
     const data = await response.json();
 
     const IMAGE_API_URL = `https://assets.pokemon.com/assets/cms2/img/pokedex/full`;
-    const paddedIndex = ('00' + (id)).slice(-3);
+    /**
+     * Extract the last 3 characters from the sequence.
+     * The full API url is for example: https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png
+     * Starting from the end of the padded string, count each index and at the 3rd index, slice it off.
+     * 
+     * Exmaple: If the ID is 1, the paddedIndex will look like "001". Because there is no 3rd or more index
+     * counting backwards, there is nothing to slice so it is fine.
+     * 
+     * Another example: If the ID is 123, the paddedIndex will look like "00123". So if we count from the
+     * end of the string to the 3rd index, we land on the first 0 from the end. We then slice it off and
+     * get "123" and then concat it to the end of the API url.
+     */
+    const paddedIndex = ('00' + id).slice(-3);  
     const currentPokemonImage = `${IMAGE_API_URL}/${paddedIndex}.png`;
 
     return {
